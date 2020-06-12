@@ -1,0 +1,7 @@
+{
+  "name": "angular-corona-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
