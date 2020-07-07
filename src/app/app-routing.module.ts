@@ -21,8 +21,15 @@ const routes: Routes = [
   {
     path: 'help',
     loadChildren: () => import('./help/help.module').then( m => m.HelpPageModule)
+  },
+  {
+    path: '/',
+    redirectTo:'world',
+    pathMatch:'full'
   }
 ];
+
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })

@@ -1,26 +1,40 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>world</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-row>
+        <ion-col><ion-img class="appIcon" src="assets/icon/coronatracker_favicon.png" alt="WorldIcon"></ion-img></ion-col>
+        <ion-col class="appTitle">Corona Tracker</ion-col>
+        <ion-col class="appDate">{{date}}</ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>  
 
-<ion-content>
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">WorldTab</ion-title>
+      </ion-toolbar>
+    </ion-header>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12" size-md>
-        ion-col [size="12"] [size-md]
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12" size-md>
-        ion-col [size="12"] [size-md]
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12" size-md>
-        ion-col [size="12"] [size-md]
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content>
+
+    <ion-slides class="tipsSlides" options={{slideOpts}}>
+      <ion-slide class="slide">
+        Maintain at least 1 metre (3 feet) distance between yourself and anyone who is coughing or sneezing.
+      </ion-slide>
+      <ion-slide class="slide">
+        Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with soap and water.
+      </ion-slide>
+      <ion-slide class="slide">
+        If you have fever, cough and difficulty breathing, seek medical care early.
+      </ion-slide>
+      <ion-slide class="slide">
+        Avoid touching eyes, nose and mouth. #StayHomeStaySafe
+      </ion-slide>
+      <ion-slide class="slide">
+        WHO Health Alert brings COVID-19 facts to billions via WhatsApp.
+      </ion-slide>
+    </ion-slides>
+  </ion-content>
+  
+</ion-app>

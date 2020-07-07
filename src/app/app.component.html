@@ -1,20 +1,19 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
 
-  <ion-content>
-    <!-- fab placed to the top end -->
-    <ion-fab vertical="top" horizontal="end" slot="fixed">
-      <ion-fab-button>
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+  <ion-tabs>
+    <!-- <ion-router-outlet>
+      <router-outlet path="/world" component={WorldTab} exact={true}></router-outlet>
+      <router-outlet path="/country" component={CountryTab} exact={true}></router-outlet>
+      <router-outlet path="/news" component={NewsTab} ></router-outlet>
+      <router-outlet path="/guidelines" component={GuidelinesTab}></router-outlet>
+      <router-outlet path="/help" component={HelpTab} ></router-outlet>
+      <router-outlet path="/" component={HelpTab} ></router-outlet>
+    </ion-router-outlet> -->
 
-    <ion-tabs>
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="world">
         <ion-icon name="earth-outline"></ion-icon>
         <ion-label>World</ion-label>
-        <ion-badge>6</ion-badge>
       </ion-tab-button>
 
       <ion-tab-button tab="country">
@@ -39,6 +38,4 @@
 
     </ion-tab-bar>
   </ion-tabs>
-</ion-content>
-
 </ion-app>

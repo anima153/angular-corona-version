@@ -17,4 +17,6 @@ import { WorldPage } from './world.page';
   ],
   declarations: [WorldPage]
 })
-export class WorldPageModule {}
+export class WorldPageModule {
+  
+}

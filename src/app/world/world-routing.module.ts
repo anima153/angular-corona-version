@@ -17,13 +17,11 @@ const routes: Routes = [
           }
         ]
       },
-      {
-        path: '',
-        redirectTo: '/world',
-        pathMatch: 'full'
-      }
+      
     ]
-  }
+  },
+  
+
 ];
 
 
