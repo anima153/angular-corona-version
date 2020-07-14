@@ -1,10 +1,83 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>country</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-row>
+        <ion-col>
+          <ion-img class="appIcon" src="assets/icon/coronatracker_favicon.png" alt="WorldIcon"></ion-img>
+        </ion-col>
+        <ion-col class="appTitle">Corona Tracker</ion-col>
+        <ion-col class="appDate">{{date}}</ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
-  
+  <ion-content>
 
-</ion-content>
+    <ion-row>
+      <ion-col size="5" class="countryTitle"> COVID19 Cases in</ion-col>
+      <ion-col size="5" class="selectTitle">
+        <ion-select [interfaceOptions]=customPopoverOptions interface="popover" value={{yourCountry}} #country (ionChange)="updateCountryData(country.value)">
+          <ion-select-option value="IND">India</ion-select-option>
+          <ion-select-option value="USA">United States</ion-select-option>
+          <ion-select-option value="ARE">UAE</ion-select-option>
+          <ion-select-option value="FRA">France</ion-select-option>
+          <ion-select-option value="ESP">Spain</ion-select-option>
+          <ion-select-option value="ITA">Italy</ion-select-option>
+          <ion-select-option value="DEU">Germany</ion-select-option>
+          <ion-select-option value="CHN">China</ion-select-option>
+          <ion-select-option value="JPN">Japan</ion-select-option>
+          <ion-select-option value="ZAF">South Africa</ion-select-option>
+          <ion-select-option value="KOR">South Korea</ion-select-option>
+          <ion-select-option value="CAN">Canada</ion-select-option>
+          <ion-select-option value="BRA">Brazil</ion-select-option>
+          <ion-select-option value="ARG">Argentina</ion-select-option>
+          <ion-select-option value="PAK">Pakistan</ion-select-option>
+          <ion-select-option value="CHE">Switzerland</ion-select-option>
+          <ion-select-option value="IRN">Iran</ion-select-option>
+          <ion-select-option value="GBR">United Kingdom</ion-select-option>
+          <ion-select-option value="TUR">Turkey</ion-select-option>
+          <ion-select-option value="NLD">Netherland</ion-select-option>
+          <ion-select-option value="RUS">Russia</ion-select-option>
+          <ion-select-option value="PRT">Portugal</ion-select-option>
+          <ion-select-option value="ISR">Israel</ion-select-option>
+          <ion-select-option value="SWE">Sweden</ion-select-option>
+          <ion-select-option value="AUS">Australia</ion-select-option>
+          <ion-select-option value="AUT">Austria</ion-select-option>
+          <ion-select-option value="NZL">New Zealand</ion-select-option>
+          <ion-select-option value="SGP">Singapore</ion-select-option>
+          <ion-select-option value="MYS">Malaysia</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="2" class="changeButton">change country</ion-col>
+    </ion-row>
+
+
+    <ion-row class="casesBox">
+      <ion-col class="totalCases">Total
+        {{worldDataService.addNumbers(confirmed,recovered,deaths) | number}}
+      </ion-col>
+      <ion-col class="confirmedBox">Confirmed {{confirmed | number }}</ion-col>
+      <ion-col class="recoveredBox">Recovered {{recovered | number}}</ion-col>
+      <ion-col class="deathsBox">Deaths {{deaths | number}}</ion-col>
+    </ion-row>
+
+    <ion-card class="pieCard">
+      <ion-card-content>
+        <canvas #countrydoughnutCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+
+      <ion-card>
+        <ion-card-content>
+          <canvas #barCanvas></canvas>
+        </ion-card-content>
+      </ion-card>
+   
+      <ion-row>
+        <ion-col class="pageTitle">#StayHomeStaySafe</ion-col>
+      </ion-row>
+    
+  </ion-content>
+
+
+</ion-app>
