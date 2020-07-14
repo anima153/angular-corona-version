@@ -2,14 +2,16 @@
   <ion-header>
     <ion-toolbar>
       <ion-row>
-        <ion-col><ion-img class="appIcon" src="assets/icon/coronatracker_favicon.png" alt="WorldIcon"></ion-img></ion-col>
+        <ion-col>
+          <ion-img class="appIcon" src="assets/icon/coronatracker_favicon.png" alt="WorldIcon"></ion-img>
+        </ion-col>
         <ion-col class="appTitle">Corona Tracker</ion-col>
         <ion-col class="appDate">{{date}}</ion-col>
       </ion-row>
     </ion-toolbar>
   </ion-header>
-  
-  <ion-content>  
+
+  <ion-content>
 
     <ion-header collapse="condense">
       <ion-toolbar>
@@ -18,7 +20,27 @@
     </ion-header>
 
 
-    <ion-slides class="tipsSlides" options={{slideOpts}}>
+    <ion-row>
+      <ion-col class="pageTitle">COVID-19 Dashboard</ion-col>
+    </ion-row>
+
+
+    <ion-row class="casesBox">
+      <ion-col class="totalCases">Total
+        {{worldDataService.addNumbers(confirmed,recovered,deaths) | number}}
+      </ion-col>
+      <ion-col class="confirmedBox">Confirmed {{confirmed | number}}</ion-col>
+      <ion-col class="recoveredBox">Recovered {{recovered | number}}</ion-col>
+      <ion-col class="deathsBox">Deaths {{deaths| number}}</ion-col>
+    </ion-row>
+
+    <ion-card class="pieCard">
+      <ion-card-content>
+        <canvas #doughnutCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-slides class="tipsSlides" [options]=slideOpts>
       <ion-slide class="slide">
         Maintain at least 1 metre (3 feet) distance between yourself and anyone who is coughing or sneezing.
       </ion-slide>
@@ -35,6 +57,41 @@
         WHO Health Alert brings COVID-19 facts to billions via WhatsApp.
       </ion-slide>
     </ion-slides>
+
+    <ion-card>
+      <ion-grid>
+        <ion-row class="tableTitle">
+          <ion-col col-4 class="tableCountry">Country</ion-col>
+          <ion-col class="tableCol">Total</ion-col>
+          <ion-col class="tableCol">Active</ion-col>
+          <ion-col class="tableCol">Recovered</ion-col>
+          <ion-col class="tableCol">Deaths</ion-col>
+        </ion-row>
+        <ion-row class="tableZebraStrip" padding *ngFor="let item of countryWiseData">
+          <ion-col col-4 class="tableCountry">
+            {{worldDataService.getDataKey(item)}}
+            <!-- {{getCountryNameFromCode(getDataKey(item))}} -->
+          </ion-col>
+          <ion-col class="tableCol"> 
+           {{worldDataService.addNumbers(confirmed,recovered,deaths) | number}}
+          </ion-col>
+          <ion-col class="tableCol">{{item[worldDataService.getDataKey(item)].confirmed | number}}</ion-col>
+          <ion-col class="tableCol">{{item[worldDataService.getDataKey(item)].recovered | number}}</ion-col>
+          <ion-col class="tableCol">{{item[worldDataService.getDataKey(item)].deaths | number}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
   </ion-content>
-  
+
+  <ion-row class="tableFooter">
+    <ion-col col-4 class="tableCountry">World</ion-col>
+    <ion-col class="tableCol">
+      {{worldDataService.addNumbers(confirmed,recovered,deaths) | number}}
+    </ion-col>
+    <ion-col class="tableCol">{{confirmed | number}}</ion-col>
+    <ion-col class="tableCol">{{recovered | number}}</ion-col>
+    <ion-col class="tableCol">{{deaths | number}}</ion-col>
+  </ion-row>
+
 </ion-app>
