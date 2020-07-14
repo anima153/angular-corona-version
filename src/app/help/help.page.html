@@ -1,9 +1,76 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>help</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-row>
+        <ion-col>
+          <ion-img class="appIcon" src="assets/icon/coronatracker_favicon.png" alt="WorldIcon"></ion-img>
+        </ion-col>
+        <ion-col class="appTitle">Corona Tracker</ion-col>
+        <ion-col class="appDate">{{date}}</ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-row>
+      <ion-col class="pageTitle">Help & Feedback</ion-col>
+    </ion-row>
+    <ion-card>
+      <ion-list>
+        <ion-item>
+          <ion-label>Call WHO helpline Number</ion-label>
+          <ion-button color='warning' href="tel:+41-22-7912111">
+            <ion-icon slot="start" icon={{callOutline}} ></ion-icon> Call</ion-button>
+        </ion-item>
+        <ion-item>
+          <ion-label>Email WHO Team</ion-label>
+          <ion-button color='warning' href="mailto:mediainquiries@who.int">
+            <ion-icon slot="start" icon={{mailOutline}} ></ion-icon> Email</ion-button>
+        </ion-item>
+        <ion-item>
+          <ion-label>Text 'Hi' to WHO helpdesk</ion-label>
+          <ion-button color='warning' href="https://api.whatsapp.com/send?phone=41798931892&text=hi&source=&data=">
+            <ion-icon slot="start" icon={{logoWhatsapp}}></ion-icon> WhatsApp</ion-button>
+        </ion-item>
+        <ion-item>
+          <ion-label>Donate via WHO website</ion-label>
+          <ion-button color='warning' href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/donate">
+            <ion-icon slot="start" icon={{walletOutline}}></ion-icon> Donate</ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+    <ion-row>
+      <ion-col class="pageTitle">Our Mission and Purpose<span role="img" aria-label="love">💖</span></ion-col>
+    </ion-row>
+    <ion-card>
+      <ion-card-content class="messageContent">
+        Cortona Tracker is cross platform handy app for checking latest numbers, getting updated news, reading official
+        guidelines and other help. <br />
+        We dedicate this app to the Doctors, Health workers, Police men and all Corona Warriors around the globe who are
+        helping us against this global pandemic.
+        <span role="img" aria-label="hand">🙏</span> <br />
+        This app is using COVID19 dataset by John Hopkins University and News from Newsapi.org.
+      </ion-card-content>
+    </ion-card>
+    <ion-row>
+      <ion-col class="pageTitle">Connect with Kia Labs development team</ion-col>
+    </ion-row>
+    <ion-card>
+      <ion-list>
+        <ion-item>
+          <ion-label>Email to Developer</ion-label>
+          <ion-button color="tertiary" href="mailto:kapil.raghuwanshi5@gmail.com">
+            <ion-icon slot="start" icon={{mailSharp}} ></ion-icon> Write Feedback</ion-button>
+        </ion-item>
+        <ion-item>
+          <ion-label>Visit Kia Labs <span role="img" aria-label="donut">💌</span></ion-label>
+          <ion-button color='tertiary' href="https://about.me/kialabs">
+            <ion-icon slot="start" icon={{logoWebComponent}} ></ion-icon> Visit About Us</ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </ion-content>
+  <ion-row>
+    <ion-col class="pageTitle">#WorldFightsCorona</ion-col>
+  </ion-row>
 
-<ion-content>
-
-</ion-content>
+</ion-app>
