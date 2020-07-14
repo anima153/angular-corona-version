@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-guidelines',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuidelinesPage implements OnInit {
 
-  constructor() { }
+  constructor(private ionLoader: LoaderService) { }
 
-  ngOnInit() {
+ngOnInit() {
+    this.ionLoader.showHideAutoLoader();
   }
 
 }
