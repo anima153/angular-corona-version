@@ -1,9 +1,44 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>news</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-row>
+        <ion-col>
+          <ion-img class="appIcon" src="assets/icon/coronatracker_favicon.png" alt="WorldIcon"></ion-img>
+        </ion-col>
+        <ion-col class="appTitle">Corona Tracker</ion-col>
+        <ion-col class="appDate">{{date}}</ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
+  <ion-content>
+    <ion-row>
+      <ion-col class="pageTitle">Latest News Bulletins</ion-col>
+    </ion-row>
+    
+    <ion-list>
+      <ion-item *ngFor="let article of iArticles">
+        <ion-card>
+          <ion-img src={{article.urlToImage}} class="newsImage" (click)=openBrowser(article.url)></ion-img>
+      
+          <ion-grid>
+            <ion-row class="newsTitle" (click)=openBrowser(article.url)>{{article.title}}</ion-row>
+            <ion-row class="newsSource">
+              <ion-col>{{article.source.name}}</ion-col>
+              <ion-col>{{trimSourceDetails(article.author)}}</ion-col>
+              <!-- {/* <ion-col text-right>{{moment(article.publishedAt).format('DD MMM YYYY')}}</ion-col> */} -->
+            </ion-row>
+      
+            <ion-row class="newsContent">{{article.description}}</ion-row>
+      
+          </ion-grid>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 
-</ion-content>
+    <ion-row>
+      <ion-col class="pageTitle">#StayAlertedStaySafe</ion-col>
+    </ion-row>
+
+</ion-app>
