@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { WorldDataService } from './world-data.service';
+import { WorldDataService } from './services/world-data.service';
 
 describe('WorldDataService', () => {
   let service: WorldDataService;

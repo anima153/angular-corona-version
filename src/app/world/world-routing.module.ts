@@ -5,20 +5,9 @@ import { WorldPage } from './world.page';
 
 const routes: Routes = [
   {
-    path: 'world',
+    path: '',
     component: WorldPage,
-    children: [
-      {
-        path: 'world',
-        children: [
-          {
-            path: '',
-            loadChildren: './world-routing.module'
-          }
-        ]
-      },
-      
-    ]
+   
   },
   
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CountryDataService } from '../services/country-data.service';
 import * as Chart from 'chart.js';
-import { Storage } from '@ionic/storage';
+// import { Storage } from '@ionic/storage';
 import * as moment from 'moment';
 import { WorldDataService } from '../services/world-data.service';
 import { LoaderService } from '../services/loader.service';
@@ -33,7 +33,7 @@ export class CountryPage implements OnInit {
   private countryTimeSeriesData: ISeriesCases[];
 
 
-  constructor(private countryDataService: CountryDataService, private storage: Storage,
+  constructor(private countryDataService: CountryDataService,
     private worldDataService: WorldDataService, private ionLoader: LoaderService) { }
 
   ngOnInit() {

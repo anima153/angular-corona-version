@@ -1,0 +1,30 @@
+ion-content {
+    --background: translucent;
+  }
+  
+  ion-toolbar {
+    --background: var(--ion-color-primary);
+  }
+  
+  .appIcon {
+    width: 30px;
+  }
+  
+  .appTitle {
+    font-weight: bolder;
+  }
+  
+  .appDate {
+    text-align: right;
+    font-weight: bolder;
+  }
+  
+  .pageTitle {
+    color: darkblue;
+    text-align: center;
+  }
+  
+  .messageContent {
+    color: black;
+  }
+  

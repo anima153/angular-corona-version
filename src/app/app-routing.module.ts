@@ -23,7 +23,7 @@ const routes: Routes = [
     loadChildren: () => import('./help/help.module').then( m => m.HelpPageModule)
   },
   {
-    path: '/',
+    path: '',
     redirectTo:'world',
     pathMatch:'full'
   }
