@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { mailOutline, logoWebComponent, mailSharp, logoWhatsapp, callOutline, walletOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-help',
