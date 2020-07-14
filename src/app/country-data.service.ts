@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient, HttpHeaders, HttpResponse }    from '@angular/common/http';
 import axios from 'axios';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
-import { IGLobalCount } from './world-data.service';
+import { Observable, throwError, of } from 'rxjs';
+import { catchError, retry, tap, count } from 'rxjs/operators';
+import { IGLobalCount } from '../models/IGLobalCount';
 
 @Injectable({
   providedIn: 'root'
@@ -13,60 +13,54 @@ import { IGLobalCount } from './world-data.service';
 
 export class CountryDataService {
   
-  private worldUrl = 'https://covidapi.info/api/v1/global'; 
-
-  // options: {
-  //   headers?: HttpHeaders | {[header: string]: string | string[]},
-  //   observe?: 'body' | 'events' | 'response',
-  //   params?: HttpParams|{[param: string]: string | string[]},
-  //   reportProgress?: boolean,
-  //   responseType?: 'arraybuffer'|'blob'|'json'|'text',
-  //   withCredentials?: boolean,
-  // }
-
-  constructor( private http: HttpClient) { }
   
-
-  // 'https://covidapi.info/api/v1/global/latest' // URL to web api
-
-  httpOptions = {
+  // options: {
+    //   headers?: HttpHeaders | {[header: string]: string | string[]},
+    //   observe?: 'body' | 'events' | 'response',
+    //   params?: HttpParams|{[param: string]: string | string[]},
+    //   reportProgress?: boolean,
+    //   responseType?: 'arraybuffer'|'blob'|'json'|'text',
+    //   withCredentials?: boolean,
+    // }
+    
+    constructor( private http: HttpClient) { }
+    
+    
+    httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-
-  getGLobalCount(): Observable<HttpResponse<IGLobalCount>> {
-    return this.http.get<IGLobalCount>(
-      this.worldUrl, { observe: 'response' });
+   getCountryData(country:String): Observable<ICountryCount> {
+     const countryUrl = 'https://covidapi.info/api/v1/country/' + country + '/latest';
+      
+     return this.http.get<ICountryCount>(countryUrl)
+        .pipe(
+          tap(_ => console.log("Country data returned for : " + country)),
+          catchError(this.handleError<ICountryCount>('getCountryData'))
+        );
   }
 
 
-}
+  
+  getcountryTimeSeriesData(country:String,startDate:any,endDate:any): Observable<ISeriesCases[]>{
+   
+    const countryTimeSeriesUrl = 'https://covidapi.info/api/v1/country/' + country + '/timeseries/' + startDate + '/' + endDate;
+    return this.http.get<ISeriesCases[]>(countryTimeSeriesUrl)
+      .pipe(
+        tap(_ => console.log("Country time series data returned for : " + country)),
+        catchError(this.handleError<ISeriesCases[]>('countryTimeSeriesUrl'))
+      );
+  }
 
-export interface ICountryCount {
-  count: number;
-  result: {
-    todaysDate: {
-      [caseName: string]: ICases
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
     };
-  };
+  }
 }
-
-export interface ICases {
-  confirmed: number;
-  deaths: number;
-  recovered: number;
-}
-
-export interface ICountryTimeSeries {
-  count: number;
-  results: ISeriesCases[];
-}
-
-export interface ISeriesCases {
-  date: string;
-  confirmed: number;
-  deaths: number;
-  recovered: number;
-}
-
-
